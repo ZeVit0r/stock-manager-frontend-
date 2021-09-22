@@ -1,4 +1,5 @@
 import * as React from 'react';
+// importações do material-ui
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,10 +7,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-
+// importação do css do componente
+import './style.css'
 
 export default ({type, items = []}) => {
+  // funcao que cria um head para diferentes tipos de botoes
   const showTableHead = () => {
     if(type === 'Categories'){
       return (
@@ -39,7 +41,7 @@ export default ({type, items = []}) => {
       )
     }
   }
-
+  // funcao que cria um body para diferentes tipos de botoes
   const showTableBody = () => {
     if(type === 'Categories'){
       return (
@@ -102,7 +104,7 @@ export default ({type, items = []}) => {
       )
     }
   }
-
+  // funcao que cria uma tabela para o relatório de fornecedores
   const showTableProvides = (products) => {
     if(type === 'Provides'){
       return(
@@ -140,13 +142,29 @@ export default ({type, items = []}) => {
       )
     }
   }
+  // funcao que coloca o titulo em cada relatório
+  const tableTitle = ()=>{
+    console.log('teste')
+    if(type==='Categories'){
+      return (<h1>Relatório de Categorias</h1>)
+    }else if(type==='Products'){
+      return (<h1>Produtos sem estoque</h1>)
+    }else if(type==='Provides'){
+      return (<h1>Fornecedores com produtos sem estoque</h1>)
+    } 
+  }
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
-        {showTableHead()}
-        {showTableBody()}
-      </Table>
-    </TableContainer>
+    <>
+      <div className="tableTitle">
+        {tableTitle()}
+      </div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
+          {showTableHead()}
+          {showTableBody()}
+        </Table>
+      </TableContainer>
+    </>
   );
 }

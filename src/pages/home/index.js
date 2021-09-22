@@ -1,21 +1,18 @@
 import React from 'react';
-
-import { Pagination } from '@mui/material';
-import Button from '@mui/material/Button';
-import { green, blue } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
-
-import Search from '../../components/search'
-import Table from '../../components/table'
-
-import './style.css'
-
+// importaçoes do material-ui
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-
+import { Pagination } from '@mui/material';
+import Button from '@mui/material/Button';
+import { styled } from '@mui/material/styles';
+// importações de componentes
+import Search from '../../components/search'
 import Form from '../../components/form';
 import ButtonReport from '../../components/buttonReport'
-
+import Table from '../../components/table'
+// importação do css da pagina
+import './style.css'
+// importação do axios
 import api from '../../services/api'
 
 // constante de estilização do componente do modal
@@ -61,7 +58,7 @@ export default () => {
     setPage(value);
   };
 
-  
+  // funcao para atualizar a pagina e para pegar os dados do backend
   const dataUpdate = () => {
     api
       .get(`/products?name=${search}&page=${page}`)
@@ -74,20 +71,21 @@ export default () => {
       });
   }
 
-  //funcao que recebe os dados do backend!!
+  // funcao que recebe os dados do backend e atualiza a pagina!!
   React.useEffect(async ()=>{    
     dataUpdate()
   },[search, page])
 
-  //funcao para adicionar items
+  // funcao para adicionar items
   const addItems = async (items) => {
     const {name, sale, purchase, amount, provide, category} = items
-    const response = await api.post("/products", {name, sale, purchase, amount, provide, category});
+    await api.post("/products", {name, sale, purchase, amount, provide, category});
 
     handleClose()
     dataUpdate()
   }
-
+  
+  // funcao que deleta items/produtos
   const removeItems = async (productId) => {
     await setData(data.filter((elem)=>{
       return (elem !== data.productId)
@@ -100,10 +98,10 @@ export default () => {
 
   // Funções de estilização de alguns components do material-ui
   const ButtonAdd = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(green[700]),
-    backgroundColor: green[700],
+    color: theme.palette.getContrastText('#088C61'),
+    backgroundColor: '#088C61',
     '&:hover': {
-      backgroundColor: green[500],
+      backgroundColor: '#00724D',
     },
   }));
 
@@ -135,7 +133,7 @@ export default () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={styleModal}>
-          <Form text={'adicionar'} modifyItems={addItems}/>
+          <Form text={'adicionar'} modifyItems={addItems} item={{name:'',sale:'',purchase:'',amount:'',category:'',provide:''}}/>
         </Box>
       </Modal>
 

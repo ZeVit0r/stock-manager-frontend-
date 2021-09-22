@@ -1,8 +1,9 @@
 import * as React from "react";
+// importações do material-ui
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
-
+// importação de icones
 import {FaSearch} from "react-icons/fa"
 
 export default (props) => {

@@ -1,6 +1,5 @@
 import React from 'react';
-
-import Table from '../src/components/table'
+// importacao de paginas
 import Home from '../src/pages/home'
 
 function App() {

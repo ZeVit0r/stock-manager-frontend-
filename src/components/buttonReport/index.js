@@ -1,13 +1,12 @@
 import React from "react";
-
+// importações do material-ui
 import Button from '@mui/material/Button';
-import { green, blue } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-
+// importação do axios
 import api from '../../services/api'
-
+//importação de componentes
 import TableReport from '../tableReport'
 
 // constante de estilização do componente do modal
@@ -33,8 +32,10 @@ export default (props) => {
   }
   const handleClose = () => setOpen(false);
 
+  // constante para os items que seram mostrados na tabela
   const [tableItems, setTableItems] = React.useState('')
 
+  // pede para o backend os dados para serem mostrados
   const itemsModal = () => {
     api
       .get(`/products/report${props.report}`)
@@ -46,12 +47,13 @@ export default (props) => {
         console.error("ops! ocorreu um erro" + err);
       });
   }
-
+  
+  // estilização do buttao utilizando metodo do material-ui
   const ButtonReport = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(blue[900]),
-    backgroundColor: blue[900],
+    color: theme.palette.getContrastText('#AE46C0'),
+    backgroundColor: '#AE46C0',
     '&:hover': {
-      backgroundColor: blue[800],
+      backgroundColor: '#9c27b0',
     },
   }));
 

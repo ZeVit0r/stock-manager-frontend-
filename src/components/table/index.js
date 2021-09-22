@@ -1,4 +1,7 @@
 import * as React from 'react';
+// importaçoes do material-ui
+import Box from '@mui/material/Box';
+import Modal from '@mui/material/Modal';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,22 +9,16 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
 import Button from '@mui/material/Button';
-import { purple, red } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-
 // importação de icones
 import {FaTrashAlt} from 'react-icons/fa'
-
-// importação dos componentes do modal
-import Box from '@mui/material/Box';
-import Modal from '@mui/material/Modal';
-
+// importação de componentes
 import Form from '../../components/form'
-
+// importação do axios
 import api from '../../services/api'
 
+// estilização para o modal
 const styleModal = {
   position: 'absolute',
   top: '50%',
@@ -47,28 +44,29 @@ export default (props) => {
 
   const [items, setItems] = React.useState([]);
 
+  // funcao para atualizar items
   const updateItems = async (elem) => {
     const {name, sale, purchase, amount, provide, category} = elem
 
-    const response = await api.put(`/products?productId=${items.id}`, {name, sale, purchase, amount, provide, category});
+    await api.put(`/products?productId=${items.id}`, {name, sale, purchase, amount, provide, category});
     handleClose();
     const update = ()=>props.update();
     update()
   }
 
+  // estilização de butoes utilizando o metodo do material-ui
   const ButtonUpdate = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
+    color: theme.palette.getContrastText('#AE46C0'),
+    backgroundColor: '#AE46C0',
     '&:hover': {
-      backgroundColor: purple[700],
+      backgroundColor: '#9c27b0',
     },
   }));
-
   const ButtonDelete = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(red[500]),
-    backgroundColor: red[500],
+    color: theme.palette.getContrastText('#E70F34'),
+    backgroundColor: '#E70F34',
     '&:hover': {
-      backgroundColor: red[700],
+      backgroundColor: '#90001A',
     },
     height: '36px'
   }));

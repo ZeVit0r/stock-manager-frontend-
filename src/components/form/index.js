@@ -1,17 +1,16 @@
 import React from 'react';
-
+// importaçoes do material-ui
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { green } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
-
+import { yupResolver } from '@hookform/resolvers/yup';
+// outras importações
 import { useForm } from "react-hook-form";
-
+import * as yup from "yup";
+// importação do css para o componente
 import './style.css'
 
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-
+// constate do yup para validação
 const schema = yup.object().shape({
   name: yup.string().required("Digite o nome do produto!!"),
   purchase: yup.number("O valor inserido não é um numero!!").positive("Valor inválido!!").required("Digite o valor de compra!!"),
@@ -21,13 +20,13 @@ const schema = yup.object().shape({
   provide: yup.string().required("Digite o nome do fornecedor do produto!!"),
 });
 
+// constantes para estilização dos inputs
 const TextFieldGreat = {
   width: '100%',
   marginBottom: '10px',
   marginleft: '5px',
   marginRight: '5px',
 };
-
 const TextFieldSmall = {
   width: '130px',
   marginBottom: '10px',
@@ -46,15 +45,17 @@ export default (props) => {
   const [provide, setProvide] = React.useState(props.item.provide);
   const [category, setCategory] = React.useState(props.item.category);
 
+  // estilização do butao utilizando metodo do material-ui
   const ButtonAdd = styled(Button)(({ theme }) => ({
-    color: theme.palette.getContrastText(green[700]),
-    backgroundColor: green[700],
+    color: theme.palette.getContrastText('#088C61'),
+    backgroundColor: '#088C61',
     '&:hover': {
-      backgroundColor: green[500],
+      backgroundColor: '#00724D',
     },
     marginBottom: '10px',
   }));
 
+  // funcao que apresenta o erro caso tenha na tela de formulario
   const error = () => {
     if(errors.name){
       return <p>{errors.name.message}</p>
@@ -77,9 +78,8 @@ export default (props) => {
         {...register("name")}
         id="name" 
         name="name" 
-        label="Nome" 
+        label="Nome"
         variant="outlined"
-        
         value={name}
         onChange={e=>setName(e.target.value)}
         sx={TextFieldGreat}/>        
@@ -91,7 +91,6 @@ export default (props) => {
           name="purchase"
           label="Compra R$" 
           variant="outlined"
-          
           value={purchase}
           onChange={e=>setPurchase(e.target.value)}
           sx={TextFieldSmall}/>
@@ -101,7 +100,6 @@ export default (props) => {
           name="sale" 
           label="Venda R$" 
           variant="outlined"
-          
           value={sale}
           onChange={e=>setSale(e.target.value)}
           sx={TextFieldSmall}/>
@@ -111,7 +109,6 @@ export default (props) => {
           name="amount"
           label="Qtd. Estoque" 
           variant="outlined"
-          
           value={amount}
           onChange={e=>setAmount(e.target.value)}
           sx={TextFieldSmall}/>
@@ -122,7 +119,6 @@ export default (props) => {
         name="category"
         label="Categoria" 
         variant="outlined"
-        
         value={category}
         onChange={e=>setCategory(e.target.value)}
         sx={TextFieldGreat}/>
@@ -132,7 +128,6 @@ export default (props) => {
         name="provide" 
         label="Fornecedor" 
         variant="outlined"
-        
         value={provide}
         onChange={e=>setProvide(e.target.value)}
         sx={TextFieldGreat}/>
