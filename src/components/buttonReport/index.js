@@ -41,7 +41,6 @@ export default (props) => {
       .get(`/products/report${props.report}`)
       .then(async (response) => {
         await setTableItems(response.data)
-        console.log(response.data)
       })
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);

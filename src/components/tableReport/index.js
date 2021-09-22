@@ -144,7 +144,6 @@ export default ({type, items = []}) => {
   }
   // funcao que coloca o titulo em cada relatório
   const tableTitle = ()=>{
-    console.log('teste')
     if(type==='Categories'){
       return (<h1>Relatório de Categorias</h1>)
     }else if(type==='Products'){
