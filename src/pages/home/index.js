@@ -124,7 +124,6 @@ export default () => {
       <div className="table">
         <Table items={data || []} removeItems={removeItems} update={dataUpdate}/>
       </div>
-      
 
       <Modal
         open={open}
