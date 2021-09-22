@@ -12,12 +12,12 @@ import './style.css'
 
 // constate do yup para validação
 const schema = yup.object().shape({
-  name: yup.string().required("Digite o nome do produto!!"),
-  purchase: yup.number("O valor inserido não é um numero!!").positive("Valor inválido!!").required("Digite o valor de compra!!"),
-  sale: yup.number(0,"O valor inserido não é um numero!!",9999).positive("Valor inválido!!").required("Digite o valor de venda!!"),
-  amount: yup.number("O valor inserido não é um numero!!").integer("Obrigatório o estoque ter valor inteiro!!").required("Digite a quantidade em estoque do produto!!"),
-  category: yup.string().required("Digite a categoria do produto!!"),
-  provide: yup.string().required("Digite o nome do fornecedor do produto!!"),
+  name: yup.string().required("Digite o nome do produto!!").max(20, "O nome deve conter mno máximo 20 caracteres"),
+  purchase: yup.number("O valor inserido não é um numero!!").positive("Valor inválido!!").required("Digite o valor de compra!!").max(999999),
+  sale: yup.number(0,"O valor inserido não é um numero!!",9999).positive("Valor inválido!!").required("Digite o valor de venda!!").max(999999),
+  amount: yup.number("O valor inserido não é um numero!!").integer("Obrigatório o estoque ter valor inteiro!!").required("Digite a quantidade em estoque do produto!!").max(99999),
+  category: yup.string().required("Digite a categoria do produto!!").max(16, "A categoria deve conter no máximo 16 caracteres"),
+  provide: yup.string().required("Digite o nome do fornecedor do produto!!").max(16, "A categoria deve conter no máximo 16 caracteres"),
 });
 
 // constantes para estilização dos inputs
@@ -60,11 +60,11 @@ export default (props) => {
     if(errors.name){
       return <p>{errors.name.message}</p>
     } else if(errors.purchase){
-      return <p>{"Compra R$ tem valor inválido!! Verifique se esta colocando um 'numero' válido maior que zero!!"}</p>
+      return <p>{"Compra R$ tem valor inválido!! Verifique se esta colocando um 'numero' válido maior que zero e menor que 1000000!!"}</p>
     } else if(errors.sale){
-      return <p>{"Venda R$ tem valor inválido!!, verifique se esta colocando um 'numero' válido maior que zero!!"}</p>
+      return <p>{"Venda R$ tem valor inválido!!, verifique se esta colocando um 'numero' válido maior que zero e menor que 1000000!!"}</p>
     } else if(errors.amount){
-      return <p>{"Estoque tem valor inválido!!, verifique se esta colocando um numero valido!!"}</p>
+      return <p>{"Estoque tem valor inválido!!, verifique se esta colocando um numero valido menor que 100000!!"}</p>
     } else if(errors.category){
       return <p>{errors.category.message}</p>
     } else if(errors.provide){
@@ -81,6 +81,7 @@ export default (props) => {
         label="Nome"
         variant="outlined"
         value={name}
+        maxLength={20}
         onChange={e=>setName(e.target.value)}
         sx={TextFieldGreat}/>        
       <div className="groupTextField">
