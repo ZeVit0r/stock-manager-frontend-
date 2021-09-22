@@ -1,6 +1,14 @@
 <h1 align="center">Stock-Manager-Frontend(React.js)</h1>
 
-Projeto de gerenciamento de estoque criado em react.js
+- Projeto de gerenciamento de estoque criado em react.js
+
+<div align="center">
+  <img src="picture01.png" width="900" title="picture01">
+</div>
+
+<div align="center">
+  <img src="picture02.png" width="900" title="picture02">
+</div>
 
 ## O que foi utilizado no projeto:
   - material-ui -> Foram utilizados alguns componentes da biblioteca(ex: tabelas, modais e etc....);
@@ -8,14 +16,15 @@ Projeto de gerenciamento de estoque criado em react.js
   - react-icons -> Utilizado para pegar icones;
   - react-hook-form -> Utilizado para criação do formulario;
   - axios -> Utilizado para solicitar requisições http;
-  - 
 
 ## Rodando o projeto:
 
-Antes de rodar o projeto instale as dependências usando:
+<b><h2>OBS: Antes de rodar os códigos à seguir, certifique-se que foi feito o clone do repositório e que o terminal se encontra na pasta do projeto!!</h2></b>
+
+Instale as dependências usando:
 
 ### `yarn # or yarn install`
 
-Para rodar o projeto:
+E para rodar o projeto utilize o código:
 
 ### `yarn start`
