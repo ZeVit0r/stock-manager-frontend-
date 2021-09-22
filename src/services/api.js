@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://stock-manager-ze.herokuapp.com",
+  baseURL: "https://stock-manager-backend.herokuapp.com",
 });
 
 export default api;
