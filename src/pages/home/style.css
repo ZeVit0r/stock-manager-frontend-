@@ -1,0 +1,43 @@
+.body {
+  width: 900px;
+  height: 520px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+
+  -webkit-user-select: none;  
+  -moz-user-select: none;     
+  -ms-user-select: none;      
+  user-select: none;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.body .table {
+  display: flex; 
+  flex-direction: column;
+  justify-content: start;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 10px; 
+}
+
+h1 {
+  color: #000;
+}
+
+.reports {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
