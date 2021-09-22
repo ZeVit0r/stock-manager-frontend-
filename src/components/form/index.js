@@ -17,7 +17,7 @@ const schema = yup.object().shape({
   sale: yup.number(0,"O valor inserido não é um numero!!",9999).positive("Valor inválido!!").required("Digite o valor de venda!!").max(999999),
   amount: yup.number("O valor inserido não é um numero!!").integer("Obrigatório o estoque ter valor inteiro!!").required("Digite a quantidade em estoque do produto!!").max(99999),
   category: yup.string().required("Digite a categoria do produto!!").max(16, "A categoria deve conter no máximo 16 caracteres"),
-  provide: yup.string().required("Digite o nome do fornecedor do produto!!").max(16, "A categoria deve conter no máximo 16 caracteres"),
+  provide: yup.string().required("Digite o nome do fornecedor do produto!!").max(20, "A categoria deve conter no máximo 20 caracteres"),
 });
 
 // constantes para estilização dos inputs
